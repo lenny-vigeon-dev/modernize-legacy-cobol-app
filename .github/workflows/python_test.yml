@@ -1,4 +1,4 @@
-name: Ubuntu x64 CIs
+name: Run Python Tests
 
 on:
   push:
@@ -14,7 +14,7 @@ env:
   PY_APP_PATH: ${{ github.workspace }}/python_app
 
 jobs:
-  Testing python versions:
+  testing-python-versions:
     runs-on: [self-hosted, ubuntu, x64]
 
     permissions:
