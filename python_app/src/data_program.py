@@ -1,5 +1,7 @@
 from typing import Union
 
+from src.const import INITIAL_AMOUNT
+
 class DataProgram:
     """
     Handles storage and retrieval of the account balance.
@@ -8,7 +10,7 @@ class DataProgram:
         """
         Initialize the DataProgram with a default balance of 1000.00.
         """
-        self.storage_balance: float = 1000.00
+        self.storage_balance: float = INITIAL_AMOUNT
 
     def read(self) -> float:
         """
