@@ -27,9 +27,8 @@ class Operations:
         """
         amount: float = float(input("Enter credit amount: "))
         balance: float = self.data_program.read()
-        if balance + amount < MAX_AMOUNT:
-            balance += amount
-            self.data_program.write(balance)
+        balance += amount
+        self.data_program.write(balance)
         print(f"Amount credited. New balance: {write_number(balance)}")
 
     def debit(self) -> None:

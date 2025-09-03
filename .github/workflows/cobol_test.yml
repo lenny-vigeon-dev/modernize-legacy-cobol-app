@@ -15,7 +15,7 @@ env:
   PY_VER: 3.13.7
 
 jobs:
-  testing-python-versions:
+  test-cobol-behaviour:
     runs-on: [self-hosted, ubuntu, x64]
 
     steps:

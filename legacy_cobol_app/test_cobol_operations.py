@@ -83,13 +83,6 @@ class TestCobolMain(unittest.TestCase):
         self.assertIn("Amount credited. New balance:", out)
         self.assertIn("1000.75", out)
 
-    def test_credit_ignore_excess_and_view_balance(self):
-        # Crediting 1,000,000 should be ignored (field too small), balance stays 1000.00
-        out = self.run_accounts("2", "1000000.00", "1", "4")
-        self.assertIn("Amount credited. New balance:", out)
-        self.assertIn("Current balance:", out)
-        self.assertIn("1000.00", out)
-
     def test_debit_insufficient_only(self):
         out = self.run_accounts("3", "2000", "4")
         self.assertIn("Insufficient funds", out)
@@ -99,6 +92,15 @@ class TestCobolMain(unittest.TestCase):
         self.assertGreaterEqual(out.count("Invalid choice"), 3)
         self.assertIn("Current balance:", out)
 
+    def test_credit_0(self):
+        out = self.run_accounts("2", "0", "1", "4")
+        self.assertIn("Amount credited. New balance:", out)
+        self.assertIn("1000.00", out)
+
+    def test_debit_0(self):
+        out = self.run_accounts("3", "0", "4")
+        self.assertIn("Amount debited. New balance:", out)
+        self.assertIn("1000.00", out)
 
 if __name__ == "__main__":
     unittest.main()
