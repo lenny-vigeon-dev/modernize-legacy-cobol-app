@@ -3,7 +3,6 @@
 Quick links:
 - Non-technical users: start with the Python app guide at [python_app/README.md](./python_app/README.md)
 - COBOL project guide: [legacy_cobol_app/README.md](./legacy_cobol_app/README.md)
-- Migration details: [MIGRATION.md](./MIGRATION.md)
 - Test plan: [legacy_cobol_app/TESTPLAN.md](./legacy_cobol_app/TESTPLAN.md)
 
 # COBOL to Python Migration Guide
