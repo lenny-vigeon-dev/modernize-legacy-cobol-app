@@ -58,14 +58,6 @@ jobs:
             curl -fsSL https://pyenv.run | bash
           fi
 
-      - name: Cache pyenv
-        uses: actions/cache@v3
-        with:
-          path: ~/.pyenv
-          key: ${{ runner.os }}-pyenv-${{ env.PY_VER }}
-          restore-keys: |
-            ${{ runner.os }}-pyenv-
-
       - name: Install Python
         run: |
           eval "$(pyenv init -)"
