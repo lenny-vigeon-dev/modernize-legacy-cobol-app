@@ -7,12 +7,6 @@ Quick links:
 - Test plan: [legacy_cobol_app/TESTPLAN.md](./legacy_cobol_app/TESTPLAN.md)
 
 # COBOL to Python Migration Guide
-# COBOL to Python Migration
-
-
-
-
-# COBOL to Python Migration Guide
 
 This document explains the process and decisions made during the migration of the legacy COBOL account management system to a modern Python implementation.
 
@@ -80,8 +74,6 @@ We run Python tests in CI across multiple Python versions with a coverage thresh
 - Further refactor for scalability or integration with databases.
 - Add more robust error handling and logging.
 - Consider packaging as a module or web service if needed.
-
----
 
 ## How to run and test (summary)
 
