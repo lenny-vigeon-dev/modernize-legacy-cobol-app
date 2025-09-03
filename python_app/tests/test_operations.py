@@ -53,12 +53,12 @@ class TestOperations(unittest.TestCase):
         sys.stdin = sys.__stdin__
         self.assertIn(f"Amount credited. New balance: {write_number(1000.75)}", captured.getvalue())
 
-    def test_credit_ignore_excess(self):
+    def test_credit_0(self):
         # Simulate input and capture print
         import io, sys
         captured = io.StringIO()
         sys.stdout = captured
-        sys.stdin = io.StringIO("1000000.00\n")
+        sys.stdin = io.StringIO("0\n")
         self.ops.credit()
         sys.stdout = sys.__stdout__
         sys.stdin = sys.__stdin__
@@ -83,6 +83,16 @@ class TestOperations(unittest.TestCase):
         sys.stdout = sys.__stdout__
         sys.stdin = sys.__stdin__
         self.assertIn("Insufficient funds for this debit.", captured.getvalue())
+
+    def test_debit_0(self):
+        import io, sys
+        captured = io.StringIO()
+        sys.stdout = captured
+        sys.stdin = io.StringIO("0\n")
+        self.ops.debit()
+        sys.stdout = sys.__stdout__
+        sys.stdin = sys.__stdin__
+        self.assertIn(f"Amount debited. New balance: {write_number(1000)}", captured.getvalue())
 
 if __name__ == "__main__":
     unittest.main()

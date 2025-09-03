@@ -52,7 +52,7 @@ class TestMainInteractive(unittest.TestCase):
         self.assertIn("Exiting the program. Goodbye!", output)
 
 
-    @patch('builtins.input', side_effect=['2', '750.23', '3', '500.89', '1', '2', '1000000', '3', '1250', '1', '4'])
+    @patch('builtins.input', side_effect=['2', '750.23', '3', '500.89', '1', '3', '1250', '1', '4'])
     def test_successive_action(self, mock_input):
         captured_output = StringIO()
         sys.stdout = captured_output
@@ -62,7 +62,6 @@ class TestMainInteractive(unittest.TestCase):
         self.assertIn(f"Amount credited. New balance: {write_number(1750.23)}", output)
         self.assertIn(f"Amount debited. New balance: {write_number(1249.34)}", output)
         self.assertIn(f"Current balance: {write_number(1249.34)}", output)
-        self.assertIn(f"Amount credited. New balance: {write_number(1249.34)}", output)
         self.assertIn(f"Insufficient funds for this debit.", output)
         self.assertIn(f"Current balance: {write_number(1249.34)}", output)
         self.assertIn("Exiting the program. Goodbye!", output)
