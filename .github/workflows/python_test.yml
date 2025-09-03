@@ -54,7 +54,7 @@ jobs:
 
       - name: Install pyenv
         run: |
-          if [ ! -f "$PYENV_ROOT" ]; then
+          if [ ! -d "$PYENV_ROOT" ]; then
             curl -fsSL https://pyenv.run | bash
           fi
 
