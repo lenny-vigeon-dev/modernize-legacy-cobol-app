@@ -1,5 +1,6 @@
 from src.data_program import DataProgram
 from src.operations import Operations
+from src.const import MENU, PROMPTS, FULL_MENU
 
 def main():
     data_program: DataProgram = DataProgram()
@@ -7,14 +8,8 @@ def main():
     run: bool = True
 
     while run:
-        print("--------------------------------")
-        print("Account Management System")
-        print("1. View Balance")
-        print("2. Credit Account")
-        print("3. Debit Account")
-        print("4. Exit")
-        print("--------------------------------")
-        choice: str = input("Enter your choice (1-4): ")
+        print(FULL_MENU)
+        choice: str = input(PROMPTS["choice_prompt"])
 
         if choice == "1":
             operations.total()
@@ -25,9 +20,9 @@ def main():
         elif choice == "4":
             run = False
         else:
-            print("Invalid choice, please select 1-4.")
+            print(MENU["invalid_choice"])
 
-    print("Exiting the program. Goodbye!")
+    print(MENU["goodbye"])
 
 if __name__ == "__main__":
     main()

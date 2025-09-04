@@ -1,6 +1,6 @@
-from src.const import MAX_AMOUNT
 from src.data_program import DataProgram
 from src.write_number import write_number
+from src.const import MESSAGES, PROMPTS
 
 class Operations:
     """
@@ -19,17 +19,17 @@ class Operations:
         Display the current account balance.
         """
         balance: float = self.data_program.read()
-        print(f"Current balance: {write_number(balance)}")
+        print(MESSAGES["current_balance"].format(write_number(balance)))
 
     def credit(self) -> None:
         """
         Prompt for a credit amount, add it to the balance, and display the new balance.
         """
-        amount: float = float(input("Enter credit amount: "))
+        amount: float = float(input(PROMPTS["credit"]))
         balance: float = self.data_program.read()
         balance += amount
         self.data_program.write(balance)
-        print(f"Amount credited. New balance: {write_number(balance)}")
+        print(MESSAGES["amount_credited"].format(write_number(balance)))
 
     def debit(self) -> None:
         """
@@ -40,6 +40,6 @@ class Operations:
         if balance >= amount:
             balance -= amount
             self.data_program.write(balance)
-            print(f"Amount debited. New balance: {write_number(balance)}")
+            print(MESSAGES["amount_debited"].format(write_number(balance)))
         else:
-            print("Insufficient funds for this debit.")
+            print(MESSAGES["insufficient_funds"])

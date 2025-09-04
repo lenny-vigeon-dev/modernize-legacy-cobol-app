@@ -2,6 +2,8 @@ import unittest
 from src.data_program import DataProgram
 from src.operations import Operations
 from src.write_number import write_number
+from src.const import INITIAL_AMOUNT
+from tests.const import MESSAGES
 
 class TestOperations(unittest.TestCase):
     dp: DataProgram
@@ -18,7 +20,7 @@ class TestOperations(unittest.TestCase):
         sys.stdout = captured
         self.ops.total()
         sys.stdout = sys.__stdout__
-        self.assertIn(f"Current balance: {write_number(1000)}", captured.getvalue())
+        self.assertIn(MESSAGES["current_balance"].format(write_number(INITIAL_AMOUNT)), captured.getvalue())
 
     def test_credit(self):
         # Simulate input and capture print
@@ -29,7 +31,7 @@ class TestOperations(unittest.TestCase):
         self.ops.credit()
         sys.stdout = sys.__stdout__
         sys.stdin = sys.__stdin__
-        self.assertIn(f"Amount credited. New balance: {write_number(1200.5)}", captured.getvalue())
+        self.assertIn(MESSAGES["amount_credited"].format(write_number(1200.5)), captured.getvalue())
 
     def test_credit_int(self):
         # Simulate input and capture print
@@ -40,7 +42,7 @@ class TestOperations(unittest.TestCase):
         self.ops.credit()
         sys.stdout = sys.__stdout__
         sys.stdin = sys.__stdin__
-        self.assertIn(f"Amount credited. New balance: {write_number(1144)}", captured.getvalue())
+        self.assertIn(MESSAGES["amount_credited"].format(write_number(1144)), captured.getvalue())
 
     def test_credit_dec(self):
         # Simulate input and capture print
@@ -51,7 +53,7 @@ class TestOperations(unittest.TestCase):
         self.ops.credit()
         sys.stdout = sys.__stdout__
         sys.stdin = sys.__stdin__
-        self.assertIn(f"Amount credited. New balance: {write_number(1000.75)}", captured.getvalue())
+        self.assertIn(MESSAGES["amount_credited"].format(write_number(1000.75)), captured.getvalue())
 
     def test_credit_0(self):
         # Simulate input and capture print
@@ -62,7 +64,7 @@ class TestOperations(unittest.TestCase):
         self.ops.credit()
         sys.stdout = sys.__stdout__
         sys.stdin = sys.__stdin__
-        self.assertIn(f"Amount credited. New balance: {write_number(1000)}", captured.getvalue())
+        self.assertIn(MESSAGES["amount_credited"].format(write_number(INITIAL_AMOUNT)), captured.getvalue())
 
     def test_debit_success(self):
         import io, sys
@@ -72,7 +74,7 @@ class TestOperations(unittest.TestCase):
         self.ops.debit()
         sys.stdout = sys.__stdout__
         sys.stdin = sys.__stdin__
-        self.assertIn(f"Amount debited. New balance: {write_number(500)}", captured.getvalue())
+        self.assertIn(MESSAGES["amount_debited"].format(write_number(500)), captured.getvalue())
 
     def test_debit_insufficient(self):
         import io, sys
@@ -82,7 +84,7 @@ class TestOperations(unittest.TestCase):
         self.ops.debit()
         sys.stdout = sys.__stdout__
         sys.stdin = sys.__stdin__
-        self.assertIn("Insufficient funds for this debit.", captured.getvalue())
+        self.assertIn(MESSAGES["insufficient_funds"], captured.getvalue())
 
     def test_debit_0(self):
         import io, sys
@@ -92,7 +94,7 @@ class TestOperations(unittest.TestCase):
         self.ops.debit()
         sys.stdout = sys.__stdout__
         sys.stdin = sys.__stdin__
-        self.assertIn(f"Amount debited. New balance: {write_number(1000)}", captured.getvalue())
+        self.assertIn(MESSAGES["amount_debited"].format(write_number(INITIAL_AMOUNT)), captured.getvalue())
 
 if __name__ == "__main__":
     unittest.main()
