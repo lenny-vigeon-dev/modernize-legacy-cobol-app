@@ -1,8 +1,3 @@
-INITIAL_AMOUNT: int = 1000.00
-
-# Balance formatting
-BALANCE_FORMAT = "09.2f"  # Format for balance display (9 digits, 2 decimal places)
-
 # Operation messages
 MESSAGES = {
     "current_balance": "Current balance: {}",

@@ -6,11 +6,11 @@ class DataProgram:
     """
     Handles storage and retrieval of the account balance.
     """
-    def __init__(self) -> None:
+    def __init__(self, initial_amount: float = INITIAL_AMOUNT):
         """
         Initialize the DataProgram with a default balance of 1000.00.
         """
-        self.storage_balance: float = INITIAL_AMOUNT
+        self.storage_balance: float = initial_amount
 
     def read(self) -> float:
         """
@@ -18,7 +18,7 @@ class DataProgram:
         """
         return self.storage_balance
 
-    def write(self, balance: Union[float, int]) -> None:
+    def write(self, balance: Union[float, int]):
         """
         Updates the account balance to the provided value.
         Args:

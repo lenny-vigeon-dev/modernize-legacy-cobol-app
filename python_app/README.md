@@ -2,6 +2,14 @@
 
 A modern Python port of the legacy [COBOL](../legacy_cobol_app/README.md) Account Management System. This app lets you view the balance, credit, and debit an in-memory account, with automated tests and coverage.
 
+# Index
+
+- [Prerequisites: Install Python](#prerequisites-install-python)
+- [Open this project folder](#open-this-project-folder)
+- [Run the program](#run-the-program)
+- [(Optional) Run the automated tests](#optional-run-the-automated-tests)
+- [Troubleshooting](#help-it-didnt-work)
+
 ## Prerequisites: Install Python
 
 You need Python 3.10+.
@@ -100,14 +108,6 @@ See coverage (how much code was tested):
   python3 -m coverage run -m unittest discover -s tests
   python3 -m coverage report
   ```
-
-Optional: HTML coverage report you can open in a browser:
-
-```bash
-python -m coverage html   # or: python3 -m coverage html
-```
-
-Then open the file `htmlcov/index.html`.
 
 ## Help! It didn’t work
 
